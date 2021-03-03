@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ClassMo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(classmos)}">
+        <h2>List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>companyId</th>
+                <th>companyName</th>
+                <th>reportLogo</th>
+                <th>reportLogopath</th>
+                <th>List</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="classmo : ${classmos}">
+                <td th:text="${classmo.id}"></td>
+                <td th:text="${classmo.companyId}"></td>
+                <td th:text="${classmo.companyName}"></td>
+                <td th:text="${classmo.reportLogo}"></td>
+                <td th:text="${classmo.reportLogopath}"></td>    
+                <td><a th:href="${'/classmo/show/' + classmo.id}">View</a> </td>
+                <td><a th:href="${'/classmo/edit/' + classmo.id}">Edit</a> </td>
+                <td><a th:href="${'/classmo/delete/' + classmo.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/classmo/new">Company details</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
